@@ -1,0 +1,41 @@
+---
+let { img, title, duration } = Astro.props;
+---
+
+<section class="AsanaCard" data-title={title}>
+  <img src={img} alt={title} />
+  <div class="title">{title}</div>
+  <div class="duration">{duration}</div>
+</section>
+
+<style>
+  .AsanaCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 40px;
+    border: 5px solid #3e3c4a69;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .AsanaCard:hover {
+    border-color: rgb(153 153 153 / 36%);
+  }
+
+  .AsanaCard.selected {
+    border-width: 5px;
+    border-color: #daffd6;
+    box-shadow: 0 0 20px 0px #bcf636;
+  }
+
+  section * {
+    margin-bottom: 20px;
+  }
+
+  img {
+    width: 100%;
+    aspect-ratio: 3.33/5;
+    background-color: #8298ff;
+  }
+</style>

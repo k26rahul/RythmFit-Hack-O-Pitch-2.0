@@ -1,0 +1,227 @@
+---
+import Bhujangasana from '../../../public/Bhujangasana.svg';
+import Parvatasana from '../../../public/Parvatasana.svg';
+---
+
+<section class="stage">
+  <div class="display">
+    <div class="display-inner">
+      <div class="video-wrapper">
+        <video id="video" playsinline autoplay> </video>
+      </div>
+      <div class="canvas-wrapper">
+        <canvas id="canvas"></canvas>
+      </div>
+    </div>
+  </div>
+  <div class="overlay active">
+    <div class="info-panel-wrapper">
+      <div class="info-panel">
+        <!--  -->
+        <div class="timer">
+          <div class="timer-number">15</div>
+          <svg>
+            <circle r="90" cx="100" cy="100"></circle>
+          </svg>
+        </div>
+        <!--  -->
+        <div class="pause-button">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            ><path
+              fill="#bcf636"
+              d="M10 16q.425 0 .713-.288T11 15V9q0-.425-.288-.713T10 8q-.425 0-.713.288T9 9v6q0 .425.288.713T10 16Zm4 0q.425 0 .713-.288T15 15V9q0-.425-.288-.713T14 8q-.425 0-.713.288T13 9v6q0 .425.288.713T14 16Zm-2 6q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22Z"
+            ></path></svg
+          >
+
+          <svg
+            class="hidden"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            ><path
+              fill="#bcf636"
+              d="m10.65 15.75l4.875-3.125q.35-.225.35-.625t-.35-.625L10.65 8.25q-.375-.25-.763-.038t-.387.663v6.25q0 .45.388.663t.762-.038ZM12 22q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22Z"
+            ></path></svg
+          >
+        </div>
+        <!--  -->
+        <div class="yoga-info">
+          <img src={Vrikshasana} alt="Vrikshasana" />
+          <div class="num">1/7</div>
+          <div class="name">Vrikshasana</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="overlay">
+    <div class="info-panel-wrapper">
+      <div class="info-panel"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .stage {
+    height: 100%;
+  }
+
+  .display {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .display-inner {
+    height: 100%;
+    position: relative;
+    transform: rotateY(180deg) scale(1.2);
+  }
+
+  .video-wrapper {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  #video {
+    width: 100%;
+  }
+
+  .canvas-wrapper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* background-color: rgb(0, 0, 0, 0.5); */
+    z-index: 2;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    display: none;
+  }
+
+  .overlay.active {
+    display: block;
+  }
+
+  .info-panel-wrapper {
+    width: 300px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .info-panel {
+    background-color: rgb(0, 0, 0, 0.2);
+    backdrop-filter: blur(2px);
+    border: 2px solid #464546;
+    border-radius: 20px;
+    padding: 20px;
+    padding-bottom: 10px;
+  }
+
+  .info-panel > * {
+    margin-bottom: 10px;
+  }
+
+  .timer {
+    position: relative;
+    height: 200px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .timer-number {
+    color: white;
+    margin-top: 12px;
+    font-size: 64px;
+  }
+
+  .timer svg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 200px;
+    transform: rotateY(-180deg) rotateZ(-90deg);
+    z-index: -1;
+  }
+
+  .timer svg circle {
+    stroke-dasharray: 565px;
+    stroke-dashoffset: 0px;
+    /* stroke-dashoffset: var(--timer-stroke-dashoffset, 0px); */
+    stroke-linecap: round;
+    stroke-width: 5px;
+    stroke: white;
+    fill: var(--accent-secondary);
+    /* transition: 0.1s stroke-dashoffset; */
+  }
+
+  .timer svg circle.active {
+    animation: timer 15s linear infinite forwards;
+  }
+
+  @keyframes timer {
+    from {
+      stroke-dashoffset: 0px;
+    }
+    to {
+      stroke-dashoffset: 565px;
+    }
+  }
+
+  .pause-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .pause-button svg {
+    width: 56px;
+    height: 56px;
+  }
+
+  .pause-button svg.hidden {
+    display: none;
+  }
+
+  .yoga-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .yoga-info > * {
+    margin-bottom: 10px;
+  }
+
+  .yoga-info img {
+    width: 190px;
+  }
+</style>
+
+<script>
+  router.run();
+</script>

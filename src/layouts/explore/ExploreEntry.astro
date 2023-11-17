@@ -1,0 +1,20 @@
+---
+import ExploreEntryCard from './ExploreEntryCard.astro';
+---
+
+<ExploreEntryCard href="#!learn" text="Learn" img="/Homepage_Learn_img.png" />
+<ExploreEntryCard
+  href="#!arena"
+  text="Arena (Coming Soon!)"
+  img="/Homepage_Arena_img.png"
+/>
+
+<script>
+  log('ExploreEntry.js loaded 👍');
+
+  router.run();
+
+  router.addRoute('learn', () => {
+    viewController.show('explore', 'ExploreYogaIntro');
+  });
+</script>

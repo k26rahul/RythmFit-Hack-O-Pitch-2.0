@@ -1,0 +1,52 @@
+---
+import AsanaCard from './AsanaCard.astro';
+import Bhujangasana from '../../../public/Bhujangasana.svg';
+import Parvatasana from '../../../public/Parvatasana.svg';
+import Sarvangasana from '../../../public/Sarvangasana.svg';
+import Trikonasana from '../../../public/Trikonasana.svg';
+import Virabhadrasana from '../../../public/Virabhadrasana.svg';
+import Vrikshasana from '../../../public/Vrikshasana.svg';
+---
+
+<h1 class="gradient-text">How would you like to proceed?</h1>
+<div class="asana-container">
+  <AsanaCard title="Bhujangasana" img={Bhujangasana} duration="15s" />
+  <AsanaCard title="Parvatasana" img={Parvatasana} duration="15s" />
+  <AsanaCard title="Sarvangasana" img={Sarvangasana} duration="15s" />
+  <AsanaCard title="Trikonasana" img={Trikonasana} duration="15s" />
+  <AsanaCard title="Virabhadrasana" img={Virabhadrasana} duration="15s" />
+  <AsanaCard title="Vrikshasana" img={Vrikshasana} duration="15s" />
+</div>
+<a href="#!start-yoga" class="cta-bttn" id="ExploreYogaIntro-continue"
+  >Continue →</a
+>
+
+<style>
+  h1 {
+    font-size: 36px;
+  }
+
+  .asana-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+  }
+</style>
+
+<script>
+  log('ExploreYogaIntro.js loaded 👍');
+
+  router.run();
+
+  router.addRoute('start-yoga', async () => {
+    const { initStage } = await import('./ExploreStage.js');
+    initStage();
+    viewController.show('explore', 'ExploreStage');
+  });
+
+  document.querySelectorAll('.AsanaCard').forEach(el => {
+    el.addEventListener('click', () => {
+      selectedAsanas[el.dataset.title] = el.classList.toggle('selected');
+    });
+  });
+</script>

@@ -1,0 +1,33 @@
+---
+let { text, href, img } = Astro.props;
+---
+
+<a class="ExploreEntryCard" href={href}>
+  <img src={img} />
+  <div>{text}</div>
+</a>
+
+<style>
+  .ExploreEntryCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: var(--box-shadow);
+    border-radius: 40px;
+    overflow: hidden;
+  }
+
+  img {
+    width: 360px;
+    aspect-ratio: 3.33/5;
+    object-fit: cover;
+  }
+
+  div {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    color: black;
+    background-color: #bcfc36;
+  }
+</style>

@@ -1,0 +1,194 @@
+---
+import App from '../layouts/App.astro';
+---
+
+<App activeLink="Get Started" zen={true}>
+  <div class="get-started">
+    <div class="heading gradient-text">Let's start with the basics</div>
+    <div class="heading gradient-text" style="font-size: 20px;">
+      Enter your details and we'll calcuate your BMI and prepare a routine for
+      you
+    </div>
+    <form>
+      <div class="label-row">
+        <label
+          >Age
+          <input
+            name="age"
+            type="text"
+            placeholder="Age in years"
+            autocomplete="off"
+          />
+        </label>
+
+        <label
+          >Weight
+          <input
+            name="weight"
+            type="text"
+            placeholder="Weight in kg"
+            autocomplete="off"
+          />
+        </label>
+      </div>
+
+      <div class="label-row">
+        <label
+          >Gender
+          <select name="gender">
+            <option value="f">Female</option>
+            <option value="m">Male</option>
+            <option value="o">Other</option>
+            <option value="na">Prefer not to say</option>
+          </select>
+        </label>
+
+        <label
+          >Height
+          <input
+            name="height"
+            type="text"
+            placeholder="Height in cm"
+            autocomplete="off"
+          />
+        </label>
+      </div>
+    </form>
+
+    <footer>
+      <div class="gs-bmi-wrapper">BMI - <span id="gs-bmi">NA</span></div>
+
+      <a href="/explore" class="cta-bttn" id="">Continue →</a>
+    </footer>
+
+    <img src="/Group 1205.svg" />
+  </div>
+
+  <script>
+    import '../layouts/App.js';
+
+    log('get-started.js loaded 👍');
+
+    // router.run();
+
+    // router.addRoute('entry', () => {
+    //   viewController.show('explore', 'ExploreEntry');
+    // });
+
+    let ageEl = document.querySelector('.get-started input[name=age]');
+    let genderEl = document.querySelector('.get-started select[name=gender]');
+    let weightEl = document.querySelector('.get-started input[name=weight]');
+    let heightEl = document.querySelector('.get-started input[name=height]');
+
+    log({
+      ageEl,
+      genderEl,
+      weightEl,
+      heightEl,
+    });
+
+    ageEl.addEventListener('keyup', () => {
+      calcBmi();
+    });
+    genderEl.addEventListener('change', () => {
+      calcBmi();
+    });
+    weightEl.addEventListener('keyup', () => {
+      calcBmi();
+    });
+    heightEl.addEventListener('keyup', () => {
+      calcBmi();
+    });
+
+    function calcBmi() {
+      let age = parseInt(ageEl.value);
+      let gender = parseInt(genderEl.value);
+      let weight = parseInt(weightEl.value);
+      let height = parseInt(heightEl.value);
+
+      log({ age, gender, weight, height });
+
+      document.querySelector('#gs-bmi').textContent =
+        weight && height ? parseInt(weight / (height / 100) ** 2) : 'NA';
+    }
+  </script>
+
+  <style>
+    img {
+      position: absolute;
+      width: 56px;
+      height: 56px;
+      bottom: 20px;
+      right: 20px;
+    }
+
+    select {
+      font-size: 16px;
+      border: 1px solid #ccc;
+      width: 285px;
+      height: 36px;
+      border-radius: 8px;
+    }
+
+    footer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .gs-bmi-wrapper {
+      margin-bottom: 20px;
+    }
+
+    .get-started {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      padding: 20px;
+      padding-top: 40px;
+      position: relative;
+    }
+
+    .heading {
+      text-align: center;
+      font-size: 36px;
+      font-weight: bolder;
+      margin-bottom: 20px;
+    }
+
+    form {
+      flex-grow: 0.5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .label-row {
+      margin-bottom: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    label {
+      margin: 40px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    input {
+      margin-left: 10px;
+      font-size: 24px;
+      padding: 5px;
+      border-radius: 8px;
+    }
+
+    ::-webkit-input-placeholder,
+    ::placeholder {
+      font-size: 16px;
+    }
+  </style>
+</App>

@@ -1,0 +1,90 @@
+---
+import App from '../layouts/App.astro';
+---
+
+<App activeLink="Get Started" zen={true}>
+  <div class="get-started">
+    <div class="heading gradient-text">Let's create your profile</div>
+    <!-- <div class="heading gradient-text" style="font-size: 20px;">
+      Enter your details and we'll calcuate your BMI and prepare a routine for
+      you
+    </div> -->
+    <form></form>
+
+    <footer>
+      <a href="/explore" class="cta-bttn" id="">Continue →</a>
+    </footer>
+  </div>
+
+  <script></script>
+
+  <style>
+    select {
+      font-size: 16px;
+      border: 1px solid #ccc;
+      width: 285px;
+      height: 36px;
+      border-radius: 8px;
+    }
+
+    footer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .gs-bmi-wrapper {
+      margin-bottom: 20px;
+    }
+
+    .get-started {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      padding: 20px;
+      padding-top: 40px;
+    }
+
+    .heading {
+      text-align: center;
+      font-size: 36px;
+      font-weight: bolder;
+      margin-bottom: 20px;
+    }
+
+    form {
+      flex-grow: 0.5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .label-row {
+      margin-bottom: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    label {
+      margin: 40px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    input {
+      margin-left: 10px;
+      font-size: 24px;
+      padding: 5px;
+      border-radius: 8px;
+    }
+
+    ::-webkit-input-placeholder,
+    ::placeholder {
+      font-size: 16px;
+    }
+  </style>
+</App>

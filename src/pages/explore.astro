@@ -1,0 +1,64 @@
+---
+import App from '../layouts/App.astro';
+import ExploreEntry from '../layouts/explore/ExploreEntry.astro';
+import ExploreYogaIntro from '../layouts/explore/ExploreYogaIntro.astro';
+import ExploreStage from '../layouts/explore/ExploreStage.astro';
+import ExploreBMI from '../layouts/explore/ExploreBMI.astro';
+---
+
+<App activeLink="Explore" zen={true}>
+  <div class="explore">
+    <section class="explore-section ExploreEntry active">
+      <ExploreEntry />
+    </section>
+
+    <section class="explore-section ExploreYogaIntro">
+      <ExploreYogaIntro />
+    </section>
+
+    <section class="explore-section ExploreStage">
+      <ExploreStage />
+    </section>
+
+    <section class="explore-section ExploreBMI">
+      <ExploreBMI />
+    </section>
+  </div>
+
+  <script>
+    import '../layouts/App.js';
+    import '../layouts/explore/explore.js';
+  </script>
+
+  <style>
+    .explore {
+      height: 100%;
+    }
+
+    .explore-section {
+      height: 100%;
+      display: none;
+    }
+
+    .explore-section.active {
+      display: flex;
+    }
+
+    .explore-section.ExploreEntry {
+      justify-content: center;
+      align-items: center;
+      gap: 100px;
+    }
+
+    .explore-section.ExploreYogaIntro {
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .explore-section.ExploreStage.active {
+      display: block;
+    }
+  </style>
+</App>
