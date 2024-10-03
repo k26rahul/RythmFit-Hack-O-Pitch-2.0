@@ -10,12 +10,12 @@ import Vrikshasana from '../../../public/Vrikshasana.svg';
 
 <h1 class="gradient-text">How would you like to proceed?</h1>
 <div class="asana-container">
-  <AsanaCard title="Bhujangasana" img={Bhujangasana} duration="15s" />
-  <AsanaCard title="Parvatasana" img={Parvatasana} duration="15s" />
-  <AsanaCard title="Sarvangasana" img={Sarvangasana} duration="15s" />
-  <AsanaCard title="Trikonasana" img={Trikonasana} duration="15s" />
-  <AsanaCard title="Virabhadrasana" img={Virabhadrasana} duration="15s" />
-  <AsanaCard title="Vrikshasana" img={Vrikshasana} duration="15s" />
+  <AsanaCard title="Bhujangasana" img={Bhujangasana.src} duration="15s" />
+  <AsanaCard title="Parvatasana" img={Parvatasana.src} duration="15s" />
+  <AsanaCard title="Sarvangasana" img={Sarvangasana.src} duration="15s" />
+  <AsanaCard title="Trikonasana" img={Trikonasana.src} duration="15s" />
+  <AsanaCard title="Virabhadrasana" img={Virabhadrasana.src} duration="15s" />
+  <AsanaCard title="Vrikshasana" img={Vrikshasana.src} duration="15s" />
 </div>
 <a href="#!start-yoga" class="cta-bttn" id="ExploreYogaIntro-continue"
   >Continue →</a
@@ -46,6 +46,7 @@ import Vrikshasana from '../../../public/Vrikshasana.svg';
 
   document.querySelectorAll('.AsanaCard').forEach(el => {
     el.addEventListener('click', () => {
+      if (el instanceof HTMLElement)
       selectedAsanas[el.dataset.title] = el.classList.toggle('selected');
     });
   });

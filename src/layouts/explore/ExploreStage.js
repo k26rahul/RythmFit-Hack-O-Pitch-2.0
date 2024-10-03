@@ -55,6 +55,8 @@ let setIntervalDuration = 100;
 let debug = false;
 // debug = true;
 export function initStage() {
+  console.log('initStage 😱');
+
   playVideoFromCamera()
     .then(async () => {
       if (debug) return;
@@ -100,12 +102,15 @@ export function initStage() {
 
 let lastUpdateTimerVal = 15;
 function updateTimer() {
+  // console.log('updateTimer 😱');
+
   let updateTimerVal = 15 - Math.ceil(yogaState.progress / 1000);
   if (updateTimerVal !== lastUpdateTimerVal) {
     lastUpdateTimerVal = updateTimerVal;
     document.querySelector('.timer-number').textContent = updateTimerVal;
   }
 }
+// updateTimer();
 
 function detectPoseFailure() {
   let diff = Date.now() - yogaState.lastTime;
@@ -134,6 +139,8 @@ function detectPoseSuccess() {
 }
 
 async function detectPose(detector, poseClassifier) {
+  detectPoseSuccess();
+
   const poses = await detector.estimatePoses(video);
   const ctx = canvasRef.getContext('2d');
 
@@ -204,3 +211,5 @@ async function detectPose(detector, poseClassifier) {
 
   detectPoseFailure();
 }
+
+// initStage();

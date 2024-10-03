@@ -1,0 +1,19 @@
+{
+  "name": "rythmfit-hack-o-pitch-2.0",
+  "version": "1.0.0",
+  "description": "RhythmFit: An AI-powered dance and fitness trainer web app created for Hack-O-Pitch-2.0 by IIT Madras.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "astro": "^4.15.10"
+  }
+}
